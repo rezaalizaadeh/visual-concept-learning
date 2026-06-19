@@ -1,51 +1,105 @@
-# Visual Concept Learning
+Visual Concept Learning
 
-This repository contains my project on visual concept learning with convolutional neural networks. The main idea was not only to train a classifier, but also to look inside the model and understand how its internal representations change from the first layers to the deeper layers.
+This project investigates how convolutional neural networks (CNNs) learn visual concepts and develop increasingly abstract internal representations across hierarchical processing stages.
 
-The project uses two visual datasets: EMNIST Letters and Fashion-MNIST. EMNIST was used as the main dataset because handwritten letters are close to symbolic visual categories, while Fashion-MNIST was used as a second dataset to compare the results with more object-like categories.
+Rather than focusing only on classification performance, the project explores how information is represented inside the network, how representations evolve across layers, and how robust they are to noise and adversarial perturbations.
 
-What I investigated
+The work was developed as part of the Cognition and Computation course at the University of Padua.
 
-The project focuses on a few main questions:
+⸻
 
-* how a CNN learns visual categories from raw images;
-* whether deeper layers become more useful for classification;
-* which classes are confused more often by the model;
-* how the learned representations are organized;
-* how robust the model is when the input images are corrupted by noise or adversarial perturbations.
+Research Questions
+
+This project explores the following questions:
+
+* How do CNNs learn visual categories from raw images?
+* Do deeper layers develop more useful and separable representations?
+* How are visual concepts organized in representation space?
+* How robust are learned representations to noise and adversarial perturbations?
+* Do similar trends emerge across different visual domains?
+
+⸻
 
 Datasets
 
-The main dataset is EMNIST Letters, which contains handwritten letters from A to Z. I also used Fashion-MNIST, which contains grayscale images of clothing categories.
+EMNIST Letters
 
-For both datasets, I used the original test set only for final evaluation. The training set was split into training and validation subsets for model selection.
+* 26 handwritten letter classes (A–Z)
+* 124,800 training samples
+* 20,800 test samples
 
-Model
+Fashion-MNIST
 
-I used a compact convolutional neural network with three convolutional blocks. The model gradually transforms the input image into higher-level feature representations, which are then used for classification.
+* 10 clothing categories
+* 60,000 training samples
+* 10,000 test samples
 
-I also compared a few architecture and hyperparameter choices before selecting the final model.
+For both datasets, the original training split was divided into training and validation subsets, while the official test set was reserved for final evaluation.
 
-Analysis
+⸻
 
-After training the model, I performed several analyses:
+Model Architecture
 
-* final test evaluation with accuracy and macro-F1;
-* confusion matrices to inspect the most common errors;
-* linear readouts from different layers to measure how class information changes across the hierarchy;
-* clustering and similarity analysis of the learned representations;
-* feature and activation visualization;
-* psychometric curves by adding increasing Gaussian noise to the test images;
-* adversarial robustness analysis using FGSM attacks;
-* adversarial fine-tuning as a simple robustness improvement.
+A compact hierarchical CNN was implemented with three convolutional blocks:
 
-Main results
+* Convolution Block 1 → 32 channels
+* Convolution Block 2 → 64 channels
+* Convolution Block 3 → 128 channels
+* Final classification layer
 
-On EMNIST Letters, the final model reached about 93.9% test accuracy and 93.8% macro-F1.
+Several hyperparameter configurations were compared before selecting the final model.
 
-On Fashion-MNIST, the model reached about 89.2% test accuracy and 89.0% macro-F1.
+⸻
 
-The linear readout analysis showed a clear improvement across layers:
+Analyses Performed
+
+Hyperparameter Comparison
+
+Comparison of multiple CNN configurations using validation accuracy and macro-F1 score.
+
+Linear Readouts
+
+Linear classifiers were trained on intermediate representations extracted from different layers to evaluate how class information emerges throughout the hierarchy.
+
+Representation Analysis
+
+* Cosine similarity matrices
+* Hierarchical clustering
+* Silhouette score evaluation
+
+Error Analysis
+
+Confusion matrices were used to identify systematic classification errors and visually similar classes.
+
+Robustness Evaluation
+
+Performance was evaluated under increasing levels of Gaussian noise.
+
+Adversarial Robustness
+
+FGSM attacks were used to investigate the vulnerability of learned representations.
+
+Adversarial Fine-Tuning
+
+A simple defense strategy was implemented and compared against the original model.
+
+⸻
+
+Results
+
+EMNIST Letters
+
+Metric	Value
+Test Accuracy	93.86%
+Macro F1	93.82%
+
+Fashion-MNIST
+
+Metric	Value
+Test Accuracy	89.24%
+Macro F1	89.00%
+
+Linear Readout Accuracy
 
 Representation	Accuracy
 Pixels	61.11%
@@ -53,24 +107,44 @@ Block 1	68.50%
 Block 2	92.93%
 Block 3	94.04%
 
-This suggests that deeper layers learned more separable and useful representations for visual classification.
+These results show that deeper layers progressively learn more discriminative representations.
 
-Main observations
+⸻
 
-The model showed systematic confusions between visually similar classes. For EMNIST, common errors included pairs such as I/L and G/Q. For Fashion-MNIST, most errors happened between visually similar clothing categories, such as shirts, coats, pullovers, and dresses.
+Main Findings
 
-The robustness experiments showed that performance decreases gradually when Gaussian noise is added, while adversarial perturbations produce a much stronger drop. After adversarial fine-tuning, the model became noticeably more robust against FGSM attacks.
+* CNNs gradually transform raw visual inputs into increasingly separable feature representations.
+* Representation quality improves substantially across the hierarchy.
+* Visually similar categories tend to cluster together in feature space.
+* Performance degrades under increasing noise and adversarial perturbations.
+* Adversarial fine-tuning significantly improves robustness.
+* Similar representation-learning trends emerge across both symbolic and object-like visual categories.
 
-Tools
+⸻
+
+Technologies
 
 * Python
 * PyTorch
 * NumPy
-* Scikit-learn
+* Scikit-Learn
 * Matplotlib
 * Seaborn
+
+⸻
+
+Repository Structure
+
+.
+├── visual_concept_learning.ipynb
+├── README.md
+├── requirements.txt
+└── figures/
+
+⸻
 
 Author
 
 Reza Mahin Mohammadalizadeh
+
 University of Padua
