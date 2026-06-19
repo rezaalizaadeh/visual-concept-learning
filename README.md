@@ -1,4 +1,4 @@
-Visual Concept Learning
+#Visual Concept Learning
 
 This repository contains my project on visual concept learning with convolutional neural networks. The main idea was not only to train a classifier, but also to look inside the model and understand how its internal representations change from the first layers to the deeper layers.
 
