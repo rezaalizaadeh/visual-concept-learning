@@ -1,54 +1,77 @@
-Visual Concept Learning
+# Visual Concept Learning Across Symbolic and Object-Like Categories
 
-Analysis of visual concept learning in convolutional neural networks through representation learning, clustering, robustness evaluation, and adversarial analysis.
+This project investigates how convolutional neural networks develop internal representations of visual concepts across different domains.
 
-Overview
+Using EMNIST Letters and Fashion-MNIST, the study examines not only classification performance but also the emergence, organization, and robustness of learned representations through a series of analyses inspired by cognitive science and machine learning.
 
-This project investigates how convolutional neural networks (CNNs) learn visual concepts and develop increasingly discriminative internal representations.
+---
 
-The study was conducted on two datasets:
+## Research Questions
 
-* EMNIST Letters
-* Fashion-MNIST
+- How do architecture and training hyperparameters affect visual concept learning?
+- Do deeper layers develop more linearly separable representations?
+- Does representation geometry reflect similarity between visual categories?
+- Are classification errors structured or random?
+- How robust are learned concepts to noise and adversarial perturbations?
 
-Beyond classification performance, the project explores representation geometry, hierarchical feature learning, robustness to noise, and adversarial vulnerability.
+---
 
-Key Results
+## Datasets
 
-Dataset	Accuracy	Macro-F1
-EMNIST Letters	93.86%	93.82%
-Fashion-MNIST	89.24%	89.00%
+| Dataset | Classes | Train | Test |
+|----------|----------|----------|----------|
+| EMNIST Letters | 26 | 124,800 | 20,800 |
+| Fashion-MNIST | 10 | 60,000 | 10,000 |
 
-Linear Readouts
+---
 
-Representation	Accuracy
-Pixels	61.11%
-Block 1	68.50%
-Block 2	92.93%
-Block 3	94.04%
+## Methodology
 
-The results show that deeper layers learn increasingly separable visual representations.
+The project combines:
 
-Experiments
+- CNN model selection
+- Layer-wise linear readouts
+- Representation similarity analysis
+- Hierarchical clustering
+- Error analysis through confusion matrices
+- Psychometric robustness curves
+- FGSM adversarial attacks
+- Adversarial fine-tuning
 
-* CNN architecture comparison
-* Linear readouts across layers
-* Representation similarity analysis
-* Hierarchical clustering
-* Confusion matrix analysis
-* Psychometric robustness curves
-* FGSM adversarial attacks
-* Adversarial fine-tuning
+---
 
-Repository
+## Main Results
 
-visual_concept_learning.ipynb    # Complete project notebook
+### EMNIST Letters
 
-Technologies
+- Accuracy: **93.86%**
+- Macro-F1: **93.82%**
 
-Python · PyTorch · NumPy · Scikit-Learn · Matplotlib
+### Fashion-MNIST
 
-Author
+- Accuracy: **89.24%**
+- Macro-F1: **89.00%**
 
-Reza Mahin Mohammadalizadeh
-University of Padua
+### Linear Readouts
+
+| Representation | Accuracy |
+|---------------|-----------|
+| Pixels | 61.11% |
+| Block 1 | 68.50% |
+| Block 2 | 92.93% |
+| Block 3 | 94.04% |
+
+These results indicate that deeper CNN layers learn progressively more separable visual representations.
+
+---
+
+## Repository Contents
+
+- `visual_concept_learning.ipynb` – complete project notebook
+- `figures/` – selected visualizations and results
+
+---
+
+## Technologies
+
+PyTorch · NumPy · Scikit-Learn · Matplotlib · Seaborn
