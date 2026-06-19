@@ -1,77 +1,133 @@
 # Visual Concept Learning Across Symbolic and Object-Like Categories
 
-This project investigates how convolutional neural networks develop internal representations of visual concepts across different domains.
+This project investigates how convolutional neural networks learn visual concepts and develop internal representations across different types of visual categories.
 
-Using EMNIST Letters and Fashion-MNIST, the study examines not only classification performance but also the emergence, organization, and robustness of learned representations through a series of analyses inspired by cognitive science and machine learning.
+Using **EMNIST Letters** and **Fashion-MNIST**, the project studies not only classification performance, but also the structure, robustness, and interpretability of the learned representations.
+
+The analysis includes linear read-outs, hierarchical clustering, feature visualization, confusion matrices, psychometric curves under noise, and adversarial robustness experiments.
 
 ---
 
-## Research Questions
+## Project Overview
 
-- How do architecture and training hyperparameters affect visual concept learning?
+The goal of this project is to understand how visual representations evolve across the hierarchy of a neural network.
+
+In particular, the project addresses the following questions:
+
 - Do deeper layers develop more linearly separable representations?
-- Does representation geometry reflect similarity between visual categories?
-- Are classification errors structured or random?
+- Does the geometry of internal representations reflect similarity between visual categories?
+- Are classification errors random, or do they follow meaningful visual patterns?
 - How robust are learned concepts to noise and adversarial perturbations?
+- Can adversarial fine-tuning improve model robustness?
 
 ---
 
 ## Datasets
 
-| Dataset | Classes | Train | Test |
-|----------|----------|----------|----------|
-| EMNIST Letters | 26 | 124,800 | 20,800 |
-| Fashion-MNIST | 10 | 60,000 | 10,000 |
+Two image-classification datasets are used:
+
+| Dataset | Description | Classes |
+|---|---|---|
+| EMNIST Letters | Handwritten alphabetic characters | 26 |
+| Fashion-MNIST | Clothing and object-like visual categories | 10 |
+
+EMNIST Letters is used as the main dataset because it provides symbolic visual categories.  
+Fashion-MNIST is used as a secondary validation dataset to compare performance on more object-like categories.
 
 ---
 
-## Methodology
+## Methods
 
-The project combines:
+The project uses a compact convolutional neural network trained for visual classification.  
+After training, the model is analyzed using several complementary methods.
 
-- CNN model selection
-- Layer-wise linear readouts
-- Representation similarity analysis
-- Hierarchical clustering
-- Error analysis through confusion matrices
-- Psychometric robustness curves
-- FGSM adversarial attacks
-- Adversarial fine-tuning
+### 1. Model Training
+
+A convolutional neural network is trained and evaluated using separate training, validation, and test sets.  
+Several model configurations are compared to select a suitable architecture.
+
+### 2. Linear Read-Out Analysis
+
+Linear classifiers are trained on representations extracted from different levels of the model hierarchy:
+
+- raw pixels
+- early convolutional layer
+- intermediate convolutional layer
+- deeper convolutional layer
+
+This analysis tests whether deeper layers produce more disentangled and linearly separable visual representations.
+
+### 3. Representation Geometry
+
+Internal representations are analyzed using:
+
+- representational similarity matrices
+- hierarchical clustering
+- silhouette scores
+
+This allows the project to examine whether the model organizes categories according to meaningful visual similarity.
+
+### 4. Feature and Activation Visualization
+
+The project visualizes:
+
+- first-layer convolutional filters
+- internal activation maps
+
+These visualizations help interpret what kinds of low-level and intermediate features are learned by the network.
+
+### 5. Error Analysis
+
+Confusion matrices are used to study classification errors and identify which categories are most frequently confused.
+
+This helps determine whether errors are structured by visual similarity rather than being random.
+
+### 6. Psychometric Curves
+
+The model is tested under increasing levels of Gaussian noise.
+
+Accuracy is measured as noise increases, producing psychometric curves that show how performance degrades under progressively harder visual conditions.
+
+### 7. Adversarial Robustness
+
+The project investigates model sensitivity to adversarial perturbations using FGSM-style attacks.
+
+A compact adversarial fine-tuning experiment is also included to evaluate whether robustness can be improved.
 
 ---
 
 ## Main Results
 
-### EMNIST Letters
+The experiments show that deeper layers produce more linearly separable representations than raw pixels and early features.
 
-- Accuracy: **93.86%**
-- Macro-F1: **93.82%**
+In the main EMNIST Letters experiment, linear read-out accuracy improves substantially across the model hierarchy:
 
-### Fashion-MNIST
+| Representation Level | Approximate Read-Out Accuracy |
+|---|---:|
+| Raw pixels | 0.61 |
+| Early convolutional layer | 0.68 |
+| Intermediate convolutional layer | 0.93 |
+| Deep convolutional layer | 0.94 |
 
-- Accuracy: **89.24%**
-- Macro-F1: **89.00%**
+This supports the idea that hierarchical neural networks progressively transform visual inputs into more abstract and disentangled representations.
 
-### Linear Readouts
-
-| Representation | Accuracy |
-|---------------|-----------|
-| Pixels | 61.11% |
-| Block 1 | 68.50% |
-| Block 2 | 92.93% |
-| Block 3 | 94.04% |
-
-These results indicate that deeper CNN layers learn progressively more separable visual representations.
+The confusion matrix analysis shows that many errors occur between visually similar letters.  
+The psychometric curves show a gradual decrease in accuracy as input noise increases.  
+The adversarial experiments show that the model is sensitive to small perturbations, although adversarial fine-tuning improves robustness to some extent.
 
 ---
 
-## Repository Contents
+## Repository Structure
 
-- `visual_concept_learning.ipynb` – complete project notebook
-- `figures/` – selected visualizations and results
-
----
-
-## Technologies
-
-PyTorch · NumPy · Scikit-Learn · Matplotlib · Seaborn
+```text
+visual-concept-learning/
+│
+├── README.md
+├── visual_concept_learning.ipynb
+├── requirements.txt
+├── .gitignore
+└── figures/
+    ├── linear_readout_accuracy.png
+    ├── confusion_matrix.png
+    ├── psychometric_curve.png
+    └── adversarial_examples.png
