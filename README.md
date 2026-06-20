@@ -161,3 +161,28 @@ visual-concept-learning/
     ├── confusion_matrix_emnist.png
     ├── psychometric_curve_noise.png
     └── adversarial_robustness_curve.png
+---
+
+## Key Skills Demonstrated
+
+- Deep learning for image classification
+- Convolutional neural networks
+- Representation learning
+- Linear probing / linear read-out analysis
+- Hierarchical clustering
+- Confusion matrix analysis
+- Psychometric curve generation
+- Adversarial attack analysis
+- Model robustness evaluation
+- Scientific visualization
+- Experimental reporting in Python notebooks
+
+---
+
+## Conclusion
+
+This project shows that classification accuracy alone is not sufficient to understand visual concept learning.
+
+By combining linear read-outs, representation geometry, clustering, feature visualization, error analysis, noise robustness, and adversarial testing, the project provides a broader analysis of how neural networks learn and organize visual categories.
+
+The results support the view that deeper neural network layers create more abstract and linearly separable representations, while also showing that these representations can remain sensitive to noise and adversarial perturbations.
