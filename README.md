@@ -141,7 +141,7 @@ The adversarial experiments show that the model is sensitive to small perturbati
 
 ### Adversarial Robustness Under FGSM Attack
 
-![Adversarial robustness curve](figures/adversarial_robustness_curve.png)
+![Adversarial robustness curve](figures/adversarial_examples.png)
 
 ---
 
