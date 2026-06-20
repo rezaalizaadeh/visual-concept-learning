@@ -177,6 +177,7 @@ visual-concept-learning/
 - Scientific visualization
 - Experimental reporting in Python notebooks
 
+```
 ---
 
 ## Conclusion
