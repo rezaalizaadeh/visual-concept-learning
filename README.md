@@ -239,4 +239,4 @@ The results support the view that deeper neural network layers create more abstr
 
 **Reza Mahin Mohammadalizadeh**
 
-GitHub: [@rezaalizadeh](https://github.com/rezaalizadeh)
+GitHub: [@rezaalizadeh](https://github.com/rezaalizaadeh)
