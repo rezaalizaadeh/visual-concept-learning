@@ -27,7 +27,7 @@ In particular, the project addresses the following questions:
 Two image-classification datasets are used:
 
 | Dataset | Description | Classes |
-|---|---|---|
+|---|---|---:|
 | EMNIST Letters | Handwritten alphabetic characters | 26 |
 | Fashion-MNIST | Clothing and object-like visual categories | 10 |
 
@@ -117,6 +117,34 @@ The adversarial experiments show that the model is sensitive to small perturbati
 
 ---
 
+## Selected Visual Results
+
+### EMNIST Letter Samples
+
+![EMNIST letter samples](figures/emnist_samples.png)
+
+### Fashion-MNIST Samples
+
+![Fashion-MNIST samples](figures/fashion_mnist_samples.png)
+
+### Layer-Wise Linear Read-Out Performance
+
+![Layer-wise linear read-out performance](figures/linear_readout_performance.png)
+
+### EMNIST Confusion Matrix
+
+![EMNIST confusion matrix](figures/confusion_matrix_emnist.png)
+
+### Psychometric Curve Under Gaussian Noise
+
+![Psychometric curve under Gaussian noise](figures/psychometric_curve_noise.png)
+
+### Adversarial Robustness Under FGSM Attack
+
+![Adversarial robustness curve](figures/adversarial_robustness_curve.png)
+
+---
+
 ## Repository Structure
 
 ```text
@@ -127,7 +155,9 @@ visual-concept-learning/
 ├── requirements.txt
 ├── .gitignore
 └── figures/
-    ├── linear_readout_accuracy.png
-    ├── confusion_matrix.png
-    ├── psychometric_curve.png
-    └── adversarial_examples.png
+    ├── emnist_samples.png
+    ├── fashion_mnist_samples.png
+    ├── linear_readout_performance.png
+    ├── confusion_matrix_emnist.png
+    ├── psychometric_curve_noise.png
+    └── adversarial_robustness_curve.png
