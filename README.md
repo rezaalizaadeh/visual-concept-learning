@@ -161,6 +161,52 @@ visual-concept-learning/
     ├── confusion_matrix_emnist.png
     ├── psychometric_curve_noise.png
     └── adversarial_robustness_curve.png
+```
+
+---
+
+## How to Run
+
+Clone the repository:
+
+```bash
+git clone https://github.com/rezaalizadeh/visual-concept-learning.git
+cd visual-concept-learning
+```
+
+Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+Open the notebook:
+
+```bash
+jupyter notebook visual_concept_learning.ipynb
+```
+
+The datasets are loaded through standard Python machine-learning libraries.  
+No manual dataset download is required if the notebook is run in an environment with internet access.
+
+---
+
+## Requirements
+
+The main Python libraries used in this project are:
+
+```text
+numpy
+pandas
+matplotlib
+torch
+torchvision
+scikit-learn
+scipy
+tqdm
+jupyter
+```
+
 ---
 
 ## Key Skills Demonstrated
@@ -177,7 +223,6 @@ visual-concept-learning/
 - Scientific visualization
 - Experimental reporting in Python notebooks
 
-```
 ---
 
 ## Conclusion
@@ -187,3 +232,11 @@ This project shows that classification accuracy alone is not sufficient to under
 By combining linear read-outs, representation geometry, clustering, feature visualization, error analysis, noise robustness, and adversarial testing, the project provides a broader analysis of how neural networks learn and organize visual categories.
 
 The results support the view that deeper neural network layers create more abstract and linearly separable representations, while also showing that these representations can remain sensitive to noise and adversarial perturbations.
+
+---
+
+## Author
+
+**Reza Mahin Mohammadalizadeh**
+
+GitHub: [@rezaalizadeh](https://github.com/rezaalizadeh)
